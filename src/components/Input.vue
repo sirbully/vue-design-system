@@ -7,7 +7,8 @@
       hovered: isHovered,
       primary: color === 'primary' && isFocused,
       success: color === 'success',
-      warning: color === 'warning'
+      warning: color === 'warning',
+      fullwidth: fullWidth
     }"
   >
     <label>
@@ -16,6 +17,7 @@
         <textarea
           v-if="multiline"
           v-bind="$attrs"
+          :rows="rows"
           :disabled="disabled"
           :value="value"
         >
@@ -62,6 +64,8 @@ export default {
     helperText: String,
     startIcon: String,
     endIcon: String,
+    rows: String,
+    fullWidth: Boolean,
     error: Boolean,
     disabled: Boolean,
     multiline: {
@@ -92,6 +96,10 @@ textarea {
   }
 }
 
+textarea {
+  resize: vertical;
+}
+
 small {
   color: #828282;
 }
@@ -106,7 +114,7 @@ small {
   display: flex;
   border: 1px solid #828282;
   border-radius: 8px;
-  width: 200px;
+  min-width: 200px;
 
   i {
     color: #828282;
@@ -116,6 +124,19 @@ small {
     display: flex;
     align-items: center;
     width: 100%;
+  }
+}
+
+.fullwidth {
+  width: 100%;
+
+  .input_box {
+    width: 100%;
+  }
+
+  textarea {
+    max-width: 100%;
+    resize: vertical;
   }
 }
 
