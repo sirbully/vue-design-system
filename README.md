@@ -1,4 +1,4 @@
-# Design System: Input component (VueJS)
+# Design System: Input component (Vue 2)
 
 Available on [Dev Challenges](https://devchallenges.io/challenges/TSqutYM4c5WtluM7QzGp)
 
