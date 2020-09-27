@@ -5,14 +5,18 @@
       <div class="input_box">
         <textarea v-if="multiline" v-bind="$attrs" v-model="value"></textarea>
         <div class="--text" v-else>
-          <i v-if="startIcon" class="material-icons">{{ startIcon }}</i>
+          <i v-if="startIcon && !endIcon" class="material-icons">
+            {{ startIcon }}
+          </i>
           <input
             v-bind="$attrs"
             :type="type"
             :placeholder="placeholder"
             v-model="value"
           />
-          <i v-if="endIcon" class="material-icons">{{ endIcon }}</i>
+          <i v-if="endIcon && !startIcon" class="material-icons">
+            {{ endIcon }}
+          </i>
         </div>
       </div>
       <small>{{ helperText }}</small>
@@ -23,18 +27,12 @@
 <script>
 export default {
   props: {
-    label: {
-      type: String,
-      default: "Label"
-    },
     type: {
       type: String,
       default: "text"
     },
-    placeholder: {
-      type: String,
-      default: "Placeholder"
-    },
+    label: String,
+    placeholder: String,
     value: String,
     helperText: String,
     startIcon: String,
@@ -79,9 +77,14 @@ small {
   border-radius: 8px;
   width: 200px;
 
+  i {
+    color: #828282;
+  }
+
   .--text {
     display: flex;
     align-items: center;
+    width: 100%;
   }
 }
 
@@ -91,7 +94,8 @@ small {
   }
 
   label,
-  small {
+  small,
+  i {
     color: #d32f2f;
   }
 }
