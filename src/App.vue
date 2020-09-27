@@ -3,6 +3,7 @@
     <Navigation />
     <div id="content">
       <router-view />
+      <p class="signature">Nicole Bullecer @ DevChallenges.io</p>
     </div>
   </div>
 </template>
@@ -49,7 +50,10 @@ a {
 }
 
 #content {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  // width: 100%;
+  min-height: 100vh;
   padding-right: 80px;
   padding-left: 80px;
 }
@@ -58,5 +62,13 @@ a {
   font-family: "Ubuntu Mono", sans-serif;
   color: #333;
   margin-top: 0;
+}
+
+.signature {
+  font-family: "Montserrat", sans-serif;
+  color: #a9a9a9;
+  font-weight: 600;
+  margin-top: auto;
+  padding-bottom: 1rem;
 }
 </style>
