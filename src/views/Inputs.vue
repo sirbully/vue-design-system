@@ -13,19 +13,25 @@
       </div>
       <div class="row mb-4">
         <div class="col-6">
-          Color variants:
-          <label>
-            <input type="radio" value="primary" v-model="color" /> Primary
-          </label>
-          <label>
-            <input type="radio" value="success" v-model="color" /> Success
-          </label>
-          <label>
-            <input type="radio" value="warning" v-model="color" /> Warning
-          </label>
-          <label>
-            <input type="radio" value="error" v-model="color" /> Error
-          </label>
+          <table>
+            <tr>
+              <td>Color variants:</td>
+              <td>
+                <label>
+                  <input type="radio" value="primary" v-model="color" /> Primary
+                </label>
+                <label>
+                  <input type="radio" value="success" v-model="color" /> Success
+                </label>
+                <label>
+                  <input type="radio" value="warning" v-model="color" /> Warning
+                </label>
+                <label>
+                  <input type="radio" value="error" v-model="color" /> Error
+                </label>
+              </td>
+            </tr>
+          </table>
         </div>
         <div class="col-6">
           Sizes:
