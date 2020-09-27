@@ -54,9 +54,5 @@ a {
   font-family: "Ubuntu Mono", sans-serif;
   color: #333;
   margin-top: 0;
-
-  &.--selector {
-    color: #828282;
-  }
 }
 </style>
