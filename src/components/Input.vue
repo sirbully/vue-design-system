@@ -1,9 +1,25 @@
 <template>
-  <div class="input" :class="{ error: error }">
+  <div
+    class="input"
+    :class="{
+      error: error,
+      disabled: disabled,
+      hovered: isHovered,
+      primary: color === 'primary' && isFocused,
+      success: color === 'success',
+      warning: color === 'warning'
+    }"
+  >
     <label>
       <span>{{ label }}</span>
       <div class="input_box">
-        <textarea v-if="multiline" v-bind="$attrs" v-model="value"></textarea>
+        <textarea
+          v-if="multiline"
+          v-bind="$attrs"
+          :disabled="disabled"
+          :value="value"
+        >
+        </textarea>
         <div class="--text" v-else>
           <i v-if="startIcon && !endIcon" class="material-icons">
             {{ startIcon }}
@@ -12,7 +28,12 @@
             v-bind="$attrs"
             :type="type"
             :placeholder="placeholder"
-            v-model="value"
+            :disabled="disabled"
+            :value="value"
+            @focus="isFocused = true"
+            @blur="isFocused = false"
+            @mouseenter="isHovered = true"
+            @mouseleave="isHovered = false"
           />
           <i v-if="endIcon && !startIcon" class="material-icons">
             {{ endIcon }}
@@ -27,6 +48,10 @@
 <script>
 export default {
   props: {
+    color: {
+      type: String,
+      default: "primary"
+    },
     type: {
       type: String,
       default: "text"
@@ -38,11 +63,16 @@ export default {
     startIcon: String,
     endIcon: String,
     error: Boolean,
+    disabled: Boolean,
     multiline: {
       type: Boolean,
       default: false
     }
-  }
+  },
+  data: () => ({
+    isFocused: false,
+    isHovered: false
+  })
 };
 </script>
 
@@ -68,6 +98,7 @@ small {
 
 .input {
   margin-bottom: 4rem;
+  width: max-content;
 }
 
 .input_box {
@@ -88,6 +119,55 @@ small {
   }
 }
 
+// Color variants
+.hovered {
+  .input_box {
+    border-color: #111;
+  }
+
+  i {
+    color: #333;
+  }
+}
+
+.primary {
+  .input_box {
+    border-color: #2962ff;
+  }
+
+  label,
+  small,
+  i {
+    color: #2962ff;
+  }
+}
+
+.success {
+  .input_box {
+    border-color: #5cb85c;
+  }
+
+  label,
+  small,
+  i,
+  input {
+    color: #5cb85c;
+  }
+}
+
+.warning {
+  .input_box {
+    border-color: #f0ad4e;
+  }
+
+  label,
+  small,
+  i,
+  input {
+    color: #f0ad4e;
+  }
+}
+
 .error {
   .input_box {
     border-color: #d32f2f;
@@ -95,8 +175,24 @@ small {
 
   label,
   small,
-  i {
+  i,
+  input {
     color: #d32f2f;
+  }
+}
+
+.disabled {
+  .input_box {
+    border-color: #e0e0e0 !important;
+    background: #f2f2f2 !important;
+    color: #828282 !important;
+  }
+
+  label,
+  small,
+  i,
+  input {
+    color: #828282;
   }
 }
 </style>

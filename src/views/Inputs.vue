@@ -2,7 +2,15 @@
   <div class="inputs">
     <h2>Inputs</h2>
     <div class="bootstrap-wrapper">
-      <h3>Options</h3>
+      <div class="mb-1">
+        <h3>Options</h3>
+        <small>
+          For icons, please refer to this page for possible values:
+          <a href="https://material.io/resources/icons/">
+            https://material.io/resources/icons/
+          </a>
+        </small>
+      </div>
       <div class="row mb-4">
         <div class="col-6">
           Color variants:
@@ -29,37 +37,29 @@
           </label>
         </div>
         <div class="col-6">
-          Icons:
-          <label class="switch">
-            <input type="checkbox" v-model="icons" />
-            <span class="slider round"></span>
-          </label>
-          <div v-show="icons">
-            <span>Start</span>
-            <span>End</span>
-          </div>
+          Icons: <input type="checkbox" v-model="icons" />
+          <span v-show="icons">
+            <label>
+              <input type="radio" value="start" v-model="icon" /> Start
+            </label>
+            <input v-show="icon === 'start'" type="text" v-model="startIcon" />
+            <label>
+              <input type="radio" value="end" v-model="icon" /> End
+            </label>
+            <input v-show="icon === 'end'" type="text" v-model="endIcon" />
+          </span>
         </div>
         <div class="col-6">
-          Full width:
-          <label class="switch">
-            <input type="checkbox" v-model="fullWidth" />
-            <span class="slider round"></span>
-          </label>
+          Full width: <input type="checkbox" v-model="fullWidth" />
         </div>
         <div class="col-6">
-          Disabled:
-          <label class="switch">
-            <input type="checkbox" v-model="disabled" />
-            <span class="slider round"></span>
-          </label>
+          Disabled: <input type="checkbox" v-model="disabled" />
         </div>
         <div class="col-6">
-          Multiline:
-          <label class="switch">
-            <input type="checkbox" v-model="multiline" />
-            <span class="slider round"></span>
-          </label>
-          <div v-show="multiline">Rows: <input type="text" /></div>
+          Multiline: <input type="checkbox" v-model="multiline" />
+          <span v-show="multiline">
+            Rows: <input type="text" v-model="rows" />
+          </span>
         </div>
         <div class="col-6">
           <div>
@@ -91,6 +91,11 @@
           <span v-if="value">value="{{ value }}" </span>
           <span v-if="placeholder">placeholder="{{ placeholder }}" </span>
           <span v-if="helperText">helperText="{{ helperText }}" </span>
+          <span v-if="icons && icon === 'start'">
+            startIcon="{{ startIcon }}"
+          </span>
+          <span v-if="icons && icon === 'end'"> endIcon="{{ endIcon }}" </span>
+          <span v-if="color && color !== 'primary'">{{ color }} </span>
           <span v-if="fullWidth">fullWidth </span>
           <span v-if="disabled">disabled </span>
           /&gt;
@@ -98,10 +103,14 @@
         <Input
           :size="size"
           :label="label"
-          :value="value"
           :placeholder="placeholder"
           :helperText="helperText"
+          :startIcon="icons && icon !== 'end' ? startIcon : null"
+          :endIcon="icons && icon !== 'start' ? endIcon : null"
           :disabled="disabled"
+          :value="value"
+          :error="color === 'error'"
+          :color="color"
         />
       </div>
     </div>
@@ -119,10 +128,11 @@ export default {
     color: "primary",
     size: "md",
     icons: false,
-    startIcon: "",
-    endIcon: "",
+    icon: "start",
+    startIcon: "call",
+    endIcon: "lock",
     label: "Label",
-    value: "Text",
+    value: "Initial text",
     placeholder: "Placeholder",
     helperText: "Some interesting text",
     fullWidth: false,
@@ -136,6 +146,10 @@ export default {
 <style lang="scss" scoped>
 .inputs {
   margin-top: 30px;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
 }
 
 .mb-4 {
