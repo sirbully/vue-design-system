@@ -25,7 +25,7 @@ ul {
   background: #fafbfd;
   color: #9e9e9e;
   padding: 43px 48px;
-  width: 237px;
+  mi-width: 237px;
 
   &_heading {
     margin: 0 0 80px 0;
