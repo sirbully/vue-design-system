@@ -1,4 +1,6 @@
-# Design System: Input component (Vue 2)
+# Design System: Input and Buttons (Vue 2)
+
+## Input component
 
 Available on [Dev Challenges](https://devchallenges.io/challenges/TSqutYM4c5WtluM7QzGp)
 
