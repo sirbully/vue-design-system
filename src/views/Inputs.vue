@@ -97,6 +97,8 @@
           <span v-if="icons && icon === 'end'"> endIcon="{{ endIcon }}" </span>
           <span v-if="color && color !== 'primary'">{{ color }} </span>
           <span v-if="fullWidth">fullWidth </span>
+          <span v-if="multiline">multiline </span>
+          <span v-if="rows && multiline">rows="{{ rows }}" </span>
           <span v-if="disabled">disabled </span>
           /&gt;
         </p>
@@ -111,6 +113,9 @@
           :value="value"
           :error="color === 'error'"
           :color="color"
+          :multiline="multiline"
+          :rows="rows"
+          :fullWidth="fullWidth"
         />
       </div>
     </div>
