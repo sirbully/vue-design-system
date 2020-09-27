@@ -32,6 +32,10 @@ h2 {
   color: #4f4f4f;
 }
 
+h3 {
+  margin: 0;
+}
+
 a {
   text-decoration: none;
 }
