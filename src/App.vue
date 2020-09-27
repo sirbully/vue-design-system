@@ -38,21 +38,29 @@ a {
 
 #app {
   display: flex;
+  width: 100vw;
   height: 100vh;
   font-family: "Noto Sans JP", sans-serif;
 }
 
 #content {
-  padding-left: 80px;
+  width: 100%;
   padding-right: 80px;
+  padding-left: 80px;
 }
 
 .text--code {
   font-family: "Ubuntu Mono", sans-serif;
   color: #333;
+  margin-top: 0;
 
   &.--selector {
     color: #828282;
   }
+}
+
+// Spacing
+.mb-4 {
+  margin-bottom: 3rem;
 }
 </style>
