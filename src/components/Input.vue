@@ -8,7 +8,8 @@
       primary: color === 'primary' && isFocused,
       success: color === 'success',
       warning: color === 'warning',
-      fullwidth: fullWidth
+      fullwidth: fullWidth,
+      sizeSm: size === 'sm'
     }"
   >
     <label>
@@ -57,6 +58,10 @@ export default {
     type: {
       type: String,
       default: "text"
+    },
+    size: {
+      type: String,
+      default: "md"
     },
     label: String,
     placeholder: String,
@@ -124,6 +129,13 @@ small {
     display: flex;
     align-items: center;
     width: 100%;
+  }
+}
+
+.sizeSm {
+  textarea,
+  input {
+    padding: 7px 5px;
   }
 }
 
