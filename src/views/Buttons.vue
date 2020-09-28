@@ -82,7 +82,9 @@
           &lt;Button
           <span v-if="value">value="{{ value }}" </span>
           <span v-if="color && color !== 'default'">color="{{ color }}" </span>
-          <span v-if="variant">variant="{{ variant }}" </span>
+          <span v-if="variant && variant != 'default'">
+            variant="{{ variant }}"
+          </span>
           <span v-if="size">size="{{ size }}" </span>
           <span v-if="icons && icon === 'start'">
             startIcon="{{ startIcon }}"
