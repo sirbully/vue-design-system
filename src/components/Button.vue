@@ -16,7 +16,7 @@
     <i v-if="startIcon && !endIcon" class="material-icons">
       {{ startIcon }}
     </i>
-    <button :disabled="disabled">{{ value }}</button>
+    <button v-bind="$attrs" :disabled="disabled">{{ value }}</button>
     <i v-if="endIcon && !startIcon" class="material-icons">
       {{ endIcon }}
     </i>
