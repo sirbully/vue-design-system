@@ -15,7 +15,7 @@
         <div class="col-6">
           <table>
             <tr>
-              <td>Color variants:</td>
+              <td>Colors:</td>
               <td>
                 <label>
                   <input type="radio" value="primary" v-model="color" /> Primary
