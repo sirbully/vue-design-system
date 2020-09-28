@@ -231,6 +231,57 @@ i {
   }
 }
 
+.disabled {
+  &.clrPrimary,
+  &.clrSecondary,
+  &.clrDanger {
+    background-color: #e0e0e0;
+    border: none;
+    box-shadow: none;
+    cursor: default;
+
+    button {
+      color: #9e9e9e;
+      cursor: default;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: #e0e0e0;
+    }
+  }
+
+  &.varOutline {
+    &.clrPrimary,
+    &.clrSecondary,
+    &.clrDanger {
+      background-color: transparent;
+      border: 1px solid #e0e0e0;
+      box-shadow: none;
+      cursor: default;
+
+      button {
+        color: #9e9e9e;
+        cursor: default;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &.varText {
+    background: transparent;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
+  }
+}
+
 // Sizes
 .sizeSm {
   padding: 6px 12px;
@@ -238,22 +289,6 @@ i {
 
 .sizeLg {
   padding: 12px 22px;
-}
-
-.disabled {
-  background-color: #e0e0e0 !important;
-  box-shadow: none !important;
-  cursor: default !important;
-
-  button {
-    color: #9e9e9e !important;
-    cursor: default !important;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: #e0e0e0 !important;
-  }
 }
 
 .disabledShadow {
