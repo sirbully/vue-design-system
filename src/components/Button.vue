@@ -240,7 +240,8 @@ i {
     box-shadow: none;
     cursor: default;
 
-    button {
+    button,
+    i {
       color: #9e9e9e;
       cursor: default;
     }
@@ -252,6 +253,22 @@ i {
   }
 
   &.varOutline {
+    background-color: transparent;
+    border: 1px solid #e0e0e0;
+    box-shadow: none;
+    cursor: default;
+
+    button,
+    i {
+      color: #9e9e9e;
+      cursor: default;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
+
     &.clrPrimary,
     &.clrSecondary,
     &.clrDanger {
@@ -260,7 +277,8 @@ i {
       box-shadow: none;
       cursor: default;
 
-      button {
+      button,
+      i {
         color: #9e9e9e;
         cursor: default;
       }
