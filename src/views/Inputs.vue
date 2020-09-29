@@ -118,7 +118,7 @@
           :disabled="disabled"
           :value="value"
           :error="color === 'error'"
-          :color="color"
+          :color="color !== 'error' ? color : null"
           :multiline="multiline"
           :rows="rows"
           :fullWidth="fullWidth"
@@ -129,7 +129,7 @@
 </template>
 
 <script>
-import Input from "@/components/Input.vue";
+import Input from "@/components/Input/Input.vue";
 
 export default {
   components: {
