@@ -26,26 +26,43 @@
 <script>
 export default {
   props: {
-    color: {
+    value: {
       type: String,
-      default: "default"
+      required: true
     },
     size: {
       type: String,
-      default: "md"
+      default: "md",
+      validator: function(value) {
+        return ["sm", "md", "lg"].indexOf(value) !== -1;
+      }
+    },
+    color: {
+      type: String,
+      default: "default",
+      validator: function(value) {
+        return (
+          ["default", "primary", "secondary", "danger"].indexOf(value) !== -1
+        );
+      }
     },
     variant: {
       type: String,
-      default: "default"
-    },
-    value: {
-      type: String,
-      default: "default"
+      default: "default",
+      validator: function(value) {
+        return ["default", "outline", "text"].indexOf(value) !== -1;
+      }
     },
     startIcon: String,
     endIcon: String,
-    disabled: Boolean,
-    disableShadow: Boolean
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    disableShadow: {
+      type: Boolean,
+      default: false
+    }
   }
 };
 </script>
