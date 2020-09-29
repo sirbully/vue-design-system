@@ -28,8 +28,8 @@
             {{ startIcon }}
           </i>
           <input
+            type="text"
             v-bind="$attrs"
-            :type="type"
             :placeholder="placeholder"
             :disabled="disabled"
             :value="value"
@@ -51,17 +51,19 @@
 <script>
 export default {
   props: {
-    color: {
-      type: String,
-      default: "primary"
-    },
-    type: {
-      type: String,
-      default: "text"
-    },
     size: {
       type: String,
-      default: "md"
+      default: "md",
+      validator: function(value) {
+        return ["sm", "md"].indexOf(value) !== -1;
+      }
+    },
+    color: {
+      type: String,
+      default: "pr",
+      validator: function(value) {
+        return ["primary", "success", "warning"].indexOf(value) !== -1;
+      }
     },
     label: String,
     placeholder: String,
@@ -69,10 +71,10 @@ export default {
     helperText: String,
     startIcon: String,
     endIcon: String,
-    rows: String,
     fullWidth: Boolean,
-    error: Boolean,
     disabled: Boolean,
+    error: Boolean,
+    rows: String,
     multiline: {
       type: Boolean,
       default: false
@@ -86,6 +88,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+label,
+small {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+label {
+  font-size: 14px;
+}
+
+small {
+  font-size: 11px;
+}
+
 input,
 textarea {
   border: 0;
@@ -110,7 +125,7 @@ small {
 }
 
 .input {
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
   width: max-content;
 }
 
